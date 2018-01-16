@@ -54,10 +54,12 @@
 <body>
 <div id="logo">7 Days Of Birthday</div>
 <div id="content">
-    What is something that you like?<br>
-    Eating it always makes you smile.<br>
-    The sight of it is perhaps more satisfying,<br>
-    Enter below and you'll find it gratifying.
+    Mark, write,<br>
+    Sketch, doodle,<br>
+    fiddle, fidget,<br>
+    play, fight.<br>
+    finished? refill.<br>
+    Cheap? Throw.
 </div>
 <div id="inputbox">
     <input type="text" id="in"/><br>
@@ -72,9 +74,12 @@
     chkBtn=document.getElementById("check").onclick = function() {
         var inp=document.getElementById("in").value.toLowerCase(),
             inputdiv=document.getElementById("inputbox");
-        if(inp=="chocolates"||inp=="chocolate"){
+        if(inp=="stationary"){
             inputdiv.innerHTML="";
             document.getElementById("content").innerHTML="<span style='color:Green'>Correct!</span><br>Check under your desk for your present(In case you haven't seen it already).";
+        }else if(inp=="pen"||inp=="pencil"){
+            inputdiv.innerHTML="";
+            document.getElementById("content").innerHTML="<span style='color:Green'>Almost Correct.</span><br>Check under your desk for your present(In case you haven't seen it already).";
         }else{
             alert('Oops! Try again or use a hint.');
         }
@@ -94,16 +99,16 @@
         if(hintCount===0){
         hint=document.createElement("span");
         hint.id="hinttext";
-        hint.innerText="It's something sweet.";
+        hint.innerText="You are just clicking this aren't you? Click again to see the real hint.";
         document.getElementById("inputbox").appendChild(hint);
         }else{
             hint=document.getElementById('hinttext');
         }
         if(hintCount===1){
-            hint.innerText="It's something sweet that you like very much!"
+            hint.innerText="Well, the correct answer is the category of the item you may be thinking of."
         }
         if(hintCount===2){
-            hint.innerText="It's something sweet and brown/black that you like very much!"
+            hint.innerText="If you enter the item, it will still be correct."
         }
         hintCount++;
     }
