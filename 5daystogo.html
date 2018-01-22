@@ -1,112 +1,152 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>7 Days of Birthday!</title>
-	<link href="https://fonts.googleapis.com/css?family=Courgette|Dancing+Script:700" rel="stylesheet">
-	<style type="text/css">
-		body{
-			background: url('bg.jpg');
-			background-repeat: no-repeat;
-			background-size: cover;
-		}
-		#logo{
-			padding: 20px;
-			margin-left: 50px;
-			margin-top: 50px;
-			font-family: 'Dancing Script', cursive;
-			font-size: 50px;
-			color: white;
-		}
-		#content{
-			height: 20%;
-			width: 30%;
-			padding: 20px;
-			margin-left: 50px;
-			font-family: 'Courgette';
-			font-size: 25px;
-			color:white;
-		}
-        #inputbox{
+    <title>7 Days of Birthday!</title>
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Dancing+Script:700" rel="stylesheet">
+    <style type="text/css">
+        body {
+            background: url('bg.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #logo {
+            padding: 20px;
+            margin-left: 50px;
+            margin-top: 50px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 50px;
+            color: white;
+        }
+
+        #content {
+            height: 20%;
+            width: 30%;
+            padding: 20px;
+            margin-left: 50px;
+            font-family: 'Courgette';
+            font-size: 25px;
+            color: white;
+        }
+
+        #inputbox {
             margin-left: 70px;
             font-family: 'Courgette';
-			font-size: 25px;
+            font-size: 25px;
         }
-        #inputbox input{
-            padding:10px;
+
+        #inputbox input {
+            padding: 10px;
             margin-bottom: 10px;
             font-size: 25px;
             font-family: 'Courgette';
             box-shadow: 1px 1px 3px 1px grey;
             border-radius: 3px;
         }
-        #buttons button{
-            padding:8px;
+
+        #buttons button {
+            padding: 8px;
             font-size: 18px;
             font-family: 'Courgette';
         }
-        #hinttext{
+
+        #hinttext {
             color: white;
             font-size: 18px;
             font-family: 'Courgette';
         }
-	</style>
+
+        div {
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        #date-box {
+            float: right;
+            position: relative;
+            width: fit-content;
+            font-family: 'Courgette';
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 50px;
+        }
+
+        #date-box div {
+            padding: 15px;
+        }
+
+        .date-passed {
+            color: rgb(255, 255, 255);
+        }
+    </style>
 </head>
+
 <body>
-<div id="logo">7 Days Of Birthday</div>
-<div id="content">
-    What is something that you like?<br>
-    Eating it always makes you smile.<br>
-    The sight of it is perhaps more satisfying,<br>
-    Enter below and you'll find it gratifying.
-</div>
-<div id="inputbox">
-    <input type="text" id="in"/><br>
-    <div id="buttons">
-        <button id="check">Check answer</button>
-        <button id="hint">Hint</button>
-        <button id="giveup">I Give up</button>
-    </div> 
-</div>
-<script>
-    var chkBtn,giveupBtn,hintBtn,hintCount=0,giveupCount=0;
-    chkBtn=document.getElementById("check").onclick = function() {
-        var inp=document.getElementById("in").value.toLowerCase(),
-            inputdiv=document.getElementById("inputbox");
-        if(inp=="chocolates"||inp=="chocolate"){
-            inputdiv.innerHTML="";
-            document.getElementById("content").innerHTML="<span style='color:Green'>Correct!</span><br>Tell your most trusted friend the password ISolvedDay2 to recieve the present.";
-        }else{
-            alert('Oops! Try again or use a hint.');
+    <div id="date-box">
+        <div class="date-passed">6</div>
+        <div class="date-passed">5</div>
+        <div>4</div>
+        <div>3</div>
+        <div>2</div>
+        <div>1</div>
+        <div>0</div>
+    </div>
+    <div id="logo">7 Days Of Birthday</div>
+    <div id="content">
+        Something else to eat. Your favorite. Dried though. You will enjoy it I'm sure.
+    </div>
+    <div id="inputbox">
+        <input type="text" id="in" />
+        <br>
+        <div id="buttons">
+            <button id="check">Check answer</button>
+            <button id="hint">Hint</button>
+            <button id="giveup">Just tell me!</button>
+        </div>
+    </div>
+    <script>
+        var chkBtn, giveupBtn, hintBtn, hintCount = 0, giveupCount = 0;
+        chkBtn = document.getElementById("check").onclick = function () {
+            var inp = document.getElementById("in").value.toLowerCase(),
+                inputdiv = document.getElementById("inputbox");
+            if (inp == "pista" || inp == "pistachios") {
+                inputdiv.innerHTML = "";
+                document.getElementById("content").innerHTML = "<span style='color:#97E66B'>Correct!</span><br>Ask for a package addressed to you at your PG(In case you haven't got it already).<br>Drop a mail to <b>hello@7daysofbday.online</b> to acknowledge that you have recieved the present.";
+            } else {
+                alert('Oops! Try again or use a hint.');
+            }
+        };
+        giveupBtn = document.getElementById("giveup").onclick = function () {
+            var inputdiv = document.getElementById("inputbox");
+            if (giveupCount === 0) {
+                document.getElementById('giveup').innerText = "Are you Sure?";
+                giveupCount++;
+            } else {
+                inputdiv.innerHTML = "";
+                document.getElementById("content").innerHTML = "It's ok.<br>It's your day! Ask for a package addressed to you at your PG(In case you haven't got it already).<br>Drop a mail to <b>hello@7daysofbday.online</b> to acknowledge that you have recieved the present.";
+            }
+        };
+        hintBtn = document.getElementById("hint").onclick = function () {
+            var hint;
+            if (hintCount === 0) {
+                hint = document.createElement("span");
+                hint.id = "hinttext";
+                hint.innerText = "It's dry.";
+                document.getElementById("inputbox").appendChild(hint);
+            } else {
+                hint = document.getElementById('hinttext');
+            }
+            if (hintCount === 1) {
+                hint.innerText = "It's fruit(?)";
+            }
+            if (hintCount === 2) {
+                hint.innerText = "A dried fruit?";
+            }
+            if (hintCount === 3) {
+                hint.innerText = "A dry fruit that you like.";
+            }
+            hintCount++;
         }
-    };
-    giveupBtn=document.getElementById("giveup").onclick = function() {
-        var inputdiv=document.getElementById("inputbox");
-        if(giveupCount===0){
-            document.getElementById('giveup').innerText="Are you Sure?";
-            giveupCount++;
-        } else {
-            inputdiv.innerHTML="";
-            document.getElementById("content").innerHTML="It's ok. It's your day! Tell your most trusted friend the password JustGiveMeMyGift to recieve the present.";
-        }
-    };
-    hintBtn=document.getElementById("hint").onclick = function() {
-        var hint;
-        if(hintCount===0){
-        hint=document.createElement("span");
-        hint.id="hinttext";
-        hint.innerText="It's something sweet.";
-        document.getElementById("inputbox").appendChild(hint);
-        }else{
-            hint=document.getElementById('hinttext');
-        }
-        if(hintCount===1){
-            hint.innerText="It's something sweet that you like very much!"
-        }
-        if(hintCount===2){
-            hint.innerText="It's something sweet and brown/black that you like very much!"
-        }
-        hintCount++;
-    }
-</script>
+    </script>
 </body>
+
 </html>
