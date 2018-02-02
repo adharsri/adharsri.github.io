@@ -26,10 +26,27 @@
 			font-size: 30px;
 			color:white;
 		}
+		a{
+			text-decoration: none;
+			color: black;
+			font-weight: bold;
+			transition: 0.5s;
+		}
+		a:hover{
+			color:rgb(39, 105, 175);
+		}
 	</style>
 </head>
 <body>
 <div id="logo">..?</div>
-<div id="content">Ah! So you have found this site? Are you ready to unlock its mysteries? You'll recieve further instructions tomorrow. Make sure you follow them.</div>
+<div id="content">Ah! So you have found this site? Are you ready to unlock its mysteries? Visit <a href="http://bit.ly/beginTheMystery">http://bit.ly/beginTheMystery</a> tomorrow
+	<br><br>There is another sheet under your keyboard. Keep it safe.
+</div>
+<div id="content">Press 'Acknowledge' to confirm that you have visited this page.
+	<form  name="visitAcknowledge" method="post">
+	<input type="hidden" name="visited" value="visited">
+	<input type="submit" value="Acknowledge">
+	</form>
+</div>
 </body>
 </html>
