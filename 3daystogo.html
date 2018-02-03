@@ -57,10 +57,6 @@
             font-family: 'Courgette';
         }
 
-        #instr {
-            font-size: 18px;
-        }
-
         div {
             text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
         }
@@ -89,47 +85,72 @@
         <div class="date-passed">6</div>
         <div class="date-passed">5</div>
         <div class="date-passed">4</div>
-        <div class="date-passed">3</div>
+        <div>3</div>
         <div>2</div>
         <div>1</div>
         <div>0</div>
     </div>
     <div id="logo">7 Days Of Birthday</div>
     <div id="content">
-        You were going to buy it.
-        <br> Well, someone listened.
-        <br> In the office, go where you refresh yourself by drinking what you like and look above.
-        <br>
-        <span id="instr">(When you have found your present, click on 'I Found it!')</span>
+        Mark, write,
+        <br> Sketch, doodle,
+        <br> fiddle, fidget,
+        <br> play, fight.
+        <br> finished? refill.
+        <br> Cheap? Throw.
     </div>
     <div id="inputbox">
+        <input type="text" id="in" />
+        <br>
         <div id="buttons">
-            <button id="foundit">I found it!</button>
+            <button id="check">Check answer</button>
             <button id="hint">Hint</button>
+            <button id="giveup">Just tell me!</button>
         </div>
     </div>
     <script>
-        var foundBtn, hintBtn, hintCount = 0;
-        foundBtn = document.getElementById('foundit');
-        hintBtn = document.getElementById('hint');
-        foundBtn.onclick = function () {
-            document.getElementById('inputbox').innerHTML = "";
-            document.getElementById('content').innerHTML = "Let me know how it is. <br>Drop a mail to <b>hello@7daysofbday.online</b> to acknowledge that you have recieved the present.";
-        }
-        hintBtn.onclick = function () {
-            if (hintCount == 0) {
+        var chkBtn, giveupBtn, hintBtn, hintCount = 0, giveupCount = 0;
+        chkBtn = document.getElementById("check").onclick = function () {
+            var inp = document.getElementById("in").value.toLowerCase(),
+                inputdiv = document.getElementById("inputbox");
+            if (inp == "stationary") {
+                inputdiv.innerHTML = "";
+                document.getElementById("content").innerHTML = "<span style='color:#97E66B'>Correct!</span><br>What's that behind your drawer under your desk?<br>Drop a mail to <b>hello@7daysofbday.online</b> to acknowledge that you have recieved the present.";
+            } else if (inp == "pen" || inp == "pencil") {
+                inputdiv.innerHTML = "";
+                document.getElementById("content").innerHTML = "<span style='color:#97E66B'>Almost Correct.</span><br>What's that behind your drawer under your desk?<br>Drop a mail to <b>hello@7daysofbday.online</b> to acknowledge that you have recieved the present.";
+            } else {
+                alert('Oops! Try again or use a hint.');
+            }
+        };
+        giveupBtn = document.getElementById("giveup").onclick = function () {
+            var inputdiv = document.getElementById("inputbox");
+            if (giveupCount === 0) {
+                document.getElementById('giveup').innerText = "Are you Sure?";
+                giveupCount++;
+            } else {
+                inputdiv.innerHTML = "";
+                document.getElementById("content").innerHTML = "It's ok.<br>It's your day!<br>What's that behind your drawer under your desk?<br>Drop a mail to <b>hello@7daysofbday.online</b> to acknowledge that you have recieved the present.";
+            }
+        };
+        hintBtn = document.getElementById("hint").onclick = function () {
+            var hint;
+            if (hintCount === 0) {
                 hint = document.createElement("span");
                 hint.id = "hinttext";
-                hint.innerText = "Did you look above?";
+                hint.innerText = "You are just clicking this aren't you? Click again to see the real hint.";
                 document.getElementById("inputbox").appendChild(hint);
+            } else {
+                hint = document.getElementById('hinttext');
             }
-            if (hintCount == 1) {
-                hint.innerText = "Above 'something', right? Surely it's not stuck on the ceiling."
-                hintBtn.innerText = "Solution";
+            if (hintCount === 1) {
+                hint.innerText = "Well, the correct answer is the category of the item you may be thinking of."
             }
-            if (hintCount == 2) {
-                hintBtn.style.display = "none";
-                hint.innerText = "Look above the shelf near the water cooler."
+            if (hintCount === 2) {
+                hint.innerText = "If you enter the name of the item, it will still be correct."
+            }
+            if (hintCount === 3) {
+                hint.innerText = "You can write with it."
             }
             hintCount++;
         }
