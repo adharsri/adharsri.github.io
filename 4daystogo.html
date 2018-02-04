@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -100,7 +101,7 @@
         <br> I know.
         <br> Do people know what you like to read?
         <br> I know.
-        <br> In the office, go where you refresh yourself by drinking what you like and look above.
+        <br> In the office, go where you work and look below.
         <br>
         <span id="instr">(When you have found your present, click on 'I Found it!')</span>
     </div>
@@ -122,16 +123,16 @@
             if (hintCount == 0) {
                 hint = document.createElement("span");
                 hint.id = "hinttext";
-                hint.innerText = "Did you look above?";
+                hint.innerText = "Did you look 'below'?";
                 document.getElementById("inputbox").appendChild(hint);
             }
             if (hintCount == 1) {
-                hint.innerText = "Above 'something', right? Surely it's not stuck on the ceiling."
+                hint.innerText = "Below 'something', right? Surely it's not lying on the ground."
                 hintBtn.innerText = "Solution";
             }
             if (hintCount == 2) {
                 hintBtn.style.display = "none";
-                hint.innerText = "Look above the shelf near the water cooler."
+                hint.innerText = "Look above the shelf under your desk."
             }
             hintCount++;
         }
