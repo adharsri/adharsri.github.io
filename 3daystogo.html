@@ -115,10 +115,10 @@
                 inputdiv = document.getElementById("inputbox");
             if (inp == "stationary") {
                 inputdiv.innerHTML = "";
-                document.getElementById("content").innerHTML = "<span style='color:#97E66B'>Correct!</span><br>What's that behind your drawer under your desk?<br>Drop a mail to <b>hello@7daysofbday.online</b> to acknowledge that you have recieved the present.";
+                document.getElementById("content").innerHTML = "<span style='color:#97E66B'>Correct!</span><br>You'll recieve your present today. Be patient.";
             } else if (inp == "pen" || inp == "pencil") {
                 inputdiv.innerHTML = "";
-                document.getElementById("content").innerHTML = "<span style='color:#97E66B'>Almost Correct.</span><br>What's that behind your drawer under your desk?<br>Drop a mail to <b>hello@7daysofbday.online</b> to acknowledge that you have recieved the present.";
+                document.getElementById("content").innerHTML = "<span style='color:#97E66B'>Almost Correct.</span><br>You'll recieve your present today. Be patient.";
             } else {
                 alert('Oops! Try again or use a hint.');
             }
@@ -130,7 +130,7 @@
                 giveupCount++;
             } else {
                 inputdiv.innerHTML = "";
-                document.getElementById("content").innerHTML = "It's ok.<br>It's your day!<br>What's that behind your drawer under your desk?<br>Drop a mail to <b>hello@7daysofbday.online</b> to acknowledge that you have recieved the present.";
+                document.getElementById("content").innerHTML = "It's ok.<br>It's your day!<br>You'll recieve your present today. Be patient.";
             }
         };
         hintBtn = document.getElementById("hint").onclick = function () {
@@ -138,18 +138,15 @@
             if (hintCount === 0) {
                 hint = document.createElement("span");
                 hint.id = "hinttext";
-                hint.innerText = "You are just clicking this aren't you? Click again to see the real hint.";
+                hint.innerText = "Well, the correct answer is the category of the item you may be thinking of.";
                 document.getElementById("inputbox").appendChild(hint);
             } else {
                 hint = document.getElementById('hinttext');
             }
             if (hintCount === 1) {
-                hint.innerText = "Well, the correct answer is the category of the item you may be thinking of."
-            }
-            if (hintCount === 2) {
                 hint.innerText = "If you enter the name of the item, it will still be correct."
             }
-            if (hintCount === 3) {
+            if (hintCount === 2) {
                 hint.innerText = "You can write with it."
             }
             hintCount++;
